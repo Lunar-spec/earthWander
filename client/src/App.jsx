@@ -20,7 +20,7 @@ import Lodging from './pages/Lodging/Lodging.jsx';
 import LodgingDetails from './pages/LodgingDetails/LodgingDetails.jsx';
 import Tnc from './pages/Extras/Tnc/Tnc.jsx';
 import Policy from './pages/Extras/Policy/Policy.jsx';
-import Faq from './pages/Extras/FAQ/Faq.jsx';
+import Faq from './pages/Extras/Faq/Faq.jsx';
 
 import './App.scss'
 import 'aos/dist/aos.css';
