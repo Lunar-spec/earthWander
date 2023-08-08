@@ -1,10 +1,20 @@
 import { useParams } from 'react-router-dom';
 import { ImStarFull } from 'react-icons/im'
+import { useState } from 'react';
 
 import './TravelDetails.scss';
 
 function TravelDetails() {
   const { id } = useParams();
+
+  const [hover, setHover] = useState(false);
+
+  const handleMouseHover = () => {
+    setHover(true)
+  }
+  const handleMouseLeave = () => {
+    setHover(false)
+  }
 
   const travelHistoryData = [
     {
@@ -118,10 +128,10 @@ function TravelDetails() {
             <div className="right">
               <div className="image-container">
                 <div className="image2">
-                  <img src={travelData.image2} alt={travelData.location} />
+                  <img className='img2' src={travelData.image2} alt={travelData.location} style={{ filter: hover ? 'blur(0)' : 'blur(5px)' }} onMouseEnter={handleMouseHover} onMouseLeave={handleMouseLeave}/>
                 </div>
                 <div className="image3">
-                  <img src={travelData.image3} alt={travelData.location} />
+                  <img className='img3' src={travelData.image3} alt={travelData.location} style={{ filter: hover ? 'blur(5px)' : 'blur(0)' }} />
                 </div>
               </div>
             </div>
