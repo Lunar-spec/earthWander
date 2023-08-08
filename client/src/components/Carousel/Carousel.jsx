@@ -6,7 +6,7 @@ import './Carousel.scss';
 
 const CombinedCarousel = () => {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const [text, setText] = useState('INCOSPAR');
+    const [text, setText] = useState('EARTHWANDER');
 
     const handleAnimate = (event) => {
         let iteration = 0
@@ -62,7 +62,7 @@ const CombinedCarousel = () => {
                 <div className="carousel-content">
                     <span>Discover</span>
                     {/* <h1 onMouseOver={handleMouseOver}>{text}</h1> */}
-                    <h1 onMouseOver={(event) => handleAnimate(event)} data-value='ISRO'>{text}</h1>
+                    <h1 onMouseOver={(event) => handleAnimate(event)} data-value='EarthWander'>{text}</h1>
                     <hr />
                     <p>Empowering responsible travelers to explore the world sustainably and ethically, one eco-friendly journey at a time.</p>
                     <a href="/about" className="slider-btn">
