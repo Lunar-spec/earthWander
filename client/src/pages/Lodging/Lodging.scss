@@ -1,0 +1,88 @@
+.lodging {
+    display: flex;
+    gap: 10px;
+
+    .filters {
+
+        // flex: 1;
+        .filter-button {}
+
+        .title {}
+
+        .filter-price {}
+    }
+
+    .main-list {
+        flex: 2;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+
+        .lodging-card {
+            cursor: pointer;
+            border-radius: 5px;
+            flex-direction: row;
+            overflow: hidden;
+            box-shadow: 0 5px 10px #ffffff37;
+            flex: 2;
+            transition: transform 0.2s ease-out;
+            height: 80%;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+
+            a {
+                display: block;
+                flex-direction: column;
+                color: inherit;
+            }
+
+            .image-container {
+                height: 200px;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    transition: all 0.3s ease-out;
+
+                    &:hover {
+                        transform: scale(1.12);
+                    }
+                }
+            }
+
+            .content {
+                padding: 10px;
+
+                h3 {
+                    font-size: 18px;
+                    font-weight: 800;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+
+                .rating {
+                    display: flex;
+                    gap: 2px;
+
+                    .star {
+                        padding-right: 5px;
+                        color: #FFBF00;
+                    }
+                }
+            }
+        }
+    }
+
+    .map {
+        flex: 1;
+    }
+}

@@ -1,0 +1,167 @@
+.contact {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 200px 20px 200px;
+    background: var(--color);
+    border-radius: 10px;
+
+    .nature {
+        position: absolute;
+        height: 350px;
+        left: 10px;
+        z-index: 3;
+    }
+
+    .left {
+        background: #fff;
+        display: flex;
+        flex: 2;
+        flex-direction: column;
+        align-items: center;
+        color: var(--color);
+        border-radius: 10px;
+        filter: drop-shadow(10px 0 20px #2323237d);
+
+        form {
+            padding: 0px 100px 0px 100px;
+            margin: 0 20px 0px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input {
+                margin: 2px 0px 20px 0px;
+                padding: 12px 10px 12px 10px;
+                width: 90%;
+                background: transparent;
+                outline: none;
+                border: none;
+                font-size: 16px;
+                border-bottom: 1px solid var(--color);
+                color: var(--color);
+                font-family: 'Poppins';
+
+                &::placeholder {
+                    color: var(--color);
+                }
+            }
+
+            textarea {
+                background-color: transparent;
+                border: none;
+                width: 65%;
+                height: 60px;
+                border-bottom: 1px solid var(--color);
+                margin-top: 10px;
+                font-family: 'Poppins';
+                font-size: 16px;
+                color: var(--color);
+                outline: none;
+
+                &::placeholder {
+                    color: var(--color);
+                }
+            }
+
+            .tnc {
+                display: flex;
+                margin: 20px 0 20px 0;
+                justify-content: center;
+                align-items: center;
+                width: 120%;
+
+                .check {
+                    margin: 0;
+                    width: 30px;
+                    height: 30px;
+                    accent-color: var(--color);
+                    transition: filter 200ms ease-out;
+
+                    &:hover {
+                        filter: drop-shadow(2px 2px 15px #92E3A9);
+                    }
+                }
+
+                span {
+                    text-align: center;
+                }
+
+            }
+
+            button {
+                padding: 10px 12px 10px 12px;
+                border: none;
+                margin-bottom: 20px;
+                border-radius: 2px;
+                font-family: 'Poppins';
+                font-size: 16px;
+                color: #232323;
+                background: var(--color);
+                transition: all 300ms ease-out;
+
+                &:hover {
+                    background: var(--color);
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    .right {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 100px 10px 100px;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+            .content-icon {
+                margin-top: 10px;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                height: 25px;
+                width: 25px;
+                padding: 10px;
+                transition: all 0.3s ease-out;
+
+                &:hover {
+                    transform: scale(1.2);
+                    filter: drop-shadow(6px 6px 10px #fff),
+                }
+            }
+        }
+    }
+
+    .child {
+        height: 350px;
+        float: right;
+        position: absolute;
+        top: 250px;
+        right: 1rem;
+        margin-left: auto;
+    }
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .nature,
+    .child {
+        display: none;
+    }
+}

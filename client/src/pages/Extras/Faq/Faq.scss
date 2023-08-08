@@ -1,0 +1,89 @@
+.faq {
+    margin: 20px 200px 20px 200px;
+
+    .header {
+        font-size: 48px;
+        font-weight: 700;
+        margin: 50px;
+        text-align: center;
+    }
+
+    .faq-content {
+        text-align: center;
+        background: #4b4b4b;
+        margin: 40px 200px 20px 200px;
+        padding: 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+            filter: drop-shadow(1px 1px 10px #fff);
+        }
+
+        .shown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+
+            .question {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                font-weight: 600;
+                cursor: pointer;
+                width: 80%;
+            }
+
+            .icon {
+                position: absolute;
+                right: 10px;
+                font-size: 42px;
+                border-radius: 50%;
+            }
+        }
+
+        .answer {
+            margin-top: 10px;
+            line-height: 1.5rem;
+            font-size: 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0, 1, 0, 1);
+        }
+
+        .answer.active {
+            margin-top: 10px;
+            height: auto;
+            max-height: 100vh;
+            font-size: 18px;
+            transition: all 0.3s cubic-bezier(1, 0, 1, 0);
+        }
+    }
+
+    .faq-svg {
+        position: absolute;
+        top: 35rem;
+        left: 1rem;
+        filter: drop-shadow(2px 2px 10px #CCCCFF);
+    }
+
+    .mob-svg {
+        position: absolute;
+        top: 65rem;
+        right: 2rem;
+        z-index: 1;
+        filter: drop-shadow(2px 2px 10px #ffffff65);
+    }
+
+    .data-svg {
+        position: absolute;
+        top: 10rem;
+        right: 2rem;
+        z-index: -1;
+        filter: drop-shadow(2px 2px 10px #ffffff7d);
+    }
+}

@@ -1,0 +1,121 @@
+.carousel {
+    position: relative;
+    width: calc(min(90rem, 90%));
+    margin: 0 auto;
+    min-height: 100vh;
+    column-gap: 3rem;
+    padding-block: min(20vh, 3rem);
+
+    .carousel-content {
+
+        span {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 1rem;
+            color: #717171;
+        }
+
+        h1 {
+            text-transform: capitalize;
+            letter-spacing: 0.8px;
+            font-size: 5rem;
+            line-height: 1.1;
+            background-color: #29ae67;
+            background-image: linear-gradient(75deg, #29ae67, #002210);
+            background-size: 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        hr {
+            display: block;
+            background: #29ae67;
+            height: 0.25rem;
+            border: none;
+            width: 10.25rem;
+            margin: 1.125rem 0 1.875rem 0;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.65rem;
+        }
+
+        .slider-btn {
+            display: inline-block;
+            color: #717171;
+            padding: 0.625rem 1.875rem;
+            margin-top: 1.125rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 2px solid transparent;
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                border-bottom: 0.125rem solid #29ae67;
+                color: #29ae67;
+            }
+        }
+    }
+
+    .myswiper {
+        width: 100%;
+        padding-top: 2.125rem;
+
+        .myswiper-slider {
+            width: 18.75rem;
+            height: 30.125em;
+            background-size: cover;
+            background-position: center;
+
+            div {
+                display: none;
+                opacity: 0;
+                padding-bottom: 0.625rem;
+            }
+
+            h2 {
+                color: #fff;
+                font-weight: 400;
+                font-size: 1.5rem;
+                line-height: 1.4;
+                margin-bottom: 0.625rem;
+                padding: 0 0 0 1.563rem;
+            }
+
+            p {
+                color: #c2c2c2b2;
+                padding: 0 1.563rem;
+                margin-bottom: 2.425rem;
+                font-size: 1rem;
+            }
+
+        }
+
+        .swiper-slide-active div {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 1;
+            padding: 0.5rem;
+            background: rgba(28, 28, 28, 0.384);
+            height: 100%;
+        }
+
+        .swiper-slide-active a {
+            align-self: flex-start;
+        }
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .carousel {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+    background: #fff;
+}
