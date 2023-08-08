@@ -6,8 +6,17 @@
     column-gap: 3rem;
     padding-block: min(20vh, 3rem);
 
-    .carousel-content {
+    @keyframes background-pan {
+        from {
+            background-position: 0% center;
+        }
 
+        to {
+            background-position: -200% center;
+        }
+    }
+
+    .carousel-content {
         span {
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -17,22 +26,43 @@
 
         h1 {
             text-transform: capitalize;
-            letter-spacing: 0.8px;
-            font-size: 5rem;
+            letter-spacing: 1px;
+            font-size: 5.5rem;
+            font-family: 'Poppins';
             line-height: 1.1;
-            background-color: #29ae67;
-            background-image: linear-gradient(75deg, #29ae67, #002210);
+            background-image: linear-gradient(to right,
+                    #0A4D68,
+                    #088395,
+                    #05BFDB,
+                    #00FFCA,
+                    #05BFDB,
+                    #088395,
+                    #0A4D68,
+                );
             background-size: 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            background-size: 200%;
+            animation: background-pan 3s linear infinite;
         }
 
         hr {
             display: block;
-            background: #29ae67;
+            background-image: linear-gradient(to right,
+                    #0A4D68,
+                    #088395,
+                    #05BFDB,
+                    #00FFCA,
+                    #05BFDB,
+                    #088395,
+                    #0A4D68,
+                );
+            animation: background-pan 3s linear infinite;
             height: 0.25rem;
             border: none;
-            width: 10.25rem;
+            width: 20.25rem;
+            background-size: 200%;
             margin: 1.125rem 0 1.875rem 0;
         }
 
@@ -52,8 +82,8 @@
             transition: 0.3s ease-in-out;
 
             &:hover {
-                border-bottom: 0.125rem solid #29ae67;
-                color: #29ae67;
+                border-bottom: 0.125rem solid #00FFCA;
+                color: #00FFCA;
             }
         }
     }

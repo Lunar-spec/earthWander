@@ -1,9 +1,32 @@
-import { Pagination, EffectCoverflow, Autoplay } from 'swiper/modules'
+import { useState } from 'react';
+import { Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'
-import './Carousel.scss'
+import 'swiper/css';
+import './Carousel.scss';
 
-const Carousel = () => {
+const CombinedCarousel = () => {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const [text, setText] = useState('EARTHWANDER');
+
+    const handleAnimate = (event) => {
+        let iteration = 0
+        
+        const interval = setInterval(() => {
+            setText(text
+                .split('')
+                .map((letter, index) => {
+                    if(index < iteration) {
+                        return event.target.dataset.value[index]
+                    }
+                    return letters[Math.floor(Math.random() * 52)]
+                })
+                .join(''))
+
+            if (iteration >= event.target.dataset.value.length) clearInterval(interval)
+            iteration += 1 / 4
+        }, 30)
+    }
+
 
     const slider = [
         {
@@ -34,20 +57,23 @@ const Carousel = () => {
     ]
 
     return (
-        <div className='carousel'>
+        <div className="carousel">
             <div>
                 <div className="carousel-content">
                     <span>Discover</span>
-                    <h1>EarthWander</h1>
+                    {/* <h1 onMouseOver={handleMouseOver}>{text}</h1> */}
+                    <h1 onMouseOver={(event) => handleAnimate(event)} data-value='EarthWander'>{text}</h1>
                     <hr />
                     <p>Empowering responsible travelers to explore the world sustainably and ethically, one eco-friendly journey at a time.</p>
-                    <a href="/about" className="slider-btn">About Us</a>
+                    <a href="/about" className="slider-btn">
+                        About Us
+                    </a>
                 </div>
             </div>
             <Swiper
-                className='myswiper'
+                className="myswiper"
                 modules={[Pagination, EffectCoverflow, Autoplay]}
-                effect={"coverflow"}
+                effect="coverflow"
                 grabCursor={true}
                 centeredSlides={true}
                 coverflowEffect={{
@@ -55,43 +81,42 @@ const Carousel = () => {
                     stretch: 0,
                     depth: 100,
                     modifier: 3,
-                    slideShadows: true
+                    slideShadows: true,
                 }}
                 loop={true}
-                pagination={{ clickable: true}}
-
+                pagination={{ clickable: true }}
                 autoplay={{
                     delay: 2000,
-                    disableOnInteraction: false
+                    disableOnInteraction: false,
                 }}
                 breakpoints={{
                     640: {
-                        slidesPerView: 2
+                        slidesPerView: 2,
                     },
                     768: {
-                        slidesPerView: 1
+                        slidesPerView: 1,
                     },
                     1024: {
-                        slidesPerView: 2
+                        slidesPerView: 2,
                     },
                     1560: {
-                        slidesPerView: 3
+                        slidesPerView: 3,
                     },
                 }}
             >
-                {slider.map((data, i) => (
-                    <>
-                        <SwiperSlide style={{ backgroundImage: `url(${data.image})` }} className='myswiper-slider' key={i}>
+                {slider.map((data) => (
+                    <div key={data.title}>
+                        <SwiperSlide style={{ backgroundImage: `url(${data.image})` }} className="myswiper-slider">
                             <div>
                                 <h2>{data.title}</h2>
                                 <p>{data.desc}</p>
                             </div>
                         </SwiperSlide>
-                    </>
+                    </div>
                 ))}
             </Swiper>
         </div>
-    )
-}
+    );
+};
 
-export default Carousel
+export default CombinedCarousel;
