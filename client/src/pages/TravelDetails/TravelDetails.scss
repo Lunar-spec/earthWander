@@ -64,9 +64,11 @@
                     opacity: 0.8;
                     transition: all 0.3s ease-out;
                     transform: rotate(-10deg);
+                    filter: blur(2px);  
 
                     &:hover {
                         opacity: 1;
+                        filter: blur(0);
                     }
                 }
             }
@@ -85,11 +87,13 @@
                     transform: rotate(12deg);
                     transition: all 0.3s ease-out;
                     left: -70px;
-                    opacity: 0.8;
+                    opacity: 1;
+                    // filter: blur(0.1px);
 
                     &:hover {
                         filter: drop-shadow(0 0 12px #000);
                         opacity: 1;
+                        // filter: blur(0);
                     }
                 }
             }
