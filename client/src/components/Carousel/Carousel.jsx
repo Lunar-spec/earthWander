@@ -60,7 +60,7 @@ const CombinedCarousel = () => {
         <div className="carousel">
             <div>
                 <div className="carousel-content">
-                    <span>Discover</span>
+                    <span>Welcome to</span>
                     <h1 onMouseOver={(event) => handleAnimate(event)} data-value='EarthWander'>{text}</h1>
                     <hr />
                     <p>Empowering responsible travelers to explore the world sustainably and ethically, one eco-friendly journey at a time.</p>

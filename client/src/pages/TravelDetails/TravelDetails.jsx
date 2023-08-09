@@ -128,10 +128,10 @@ function TravelDetails() {
             <div className="right">
               <div className="image-container">
                 <div className="image2">
-                  <img className='img2' src={travelData.image2} alt={travelData.location} style={{ filter: hover ? 'blur(0)' : 'blur(5px)' }} onMouseEnter={handleMouseHover} onMouseLeave={handleMouseLeave}/>
+                  <img src={travelData.image2} alt={travelData.location} style={{ filter: hover ? 'blur(0)' : 'blur(5px)' }} onMouseEnter={handleMouseHover} onMouseLeave={handleMouseLeave}/>
                 </div>
                 <div className="image3">
-                  <img className='img3' src={travelData.image3} alt={travelData.location} style={{ filter: hover ? 'blur(5px)' : 'blur(0)' }} />
+                  <img src={travelData.image3} alt={travelData.location} style={{ filter: hover ? 'blur(5px)' : 'blur(0)' }} />
                 </div>
               </div>
             </div>
