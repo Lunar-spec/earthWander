@@ -10,6 +10,7 @@ import './LodgingDetails.scss';
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel"
 
 const LodgingDetails = () => {
+
   const { id } = useParams();
 
   const lodgingsData = [

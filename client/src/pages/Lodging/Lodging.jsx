@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ImStarFull } from 'react-icons/im'
+import { FcFilledFilter, FcEmptyFilter } from 'react-icons/fc'
 
 import './Lodging.scss'
 import SideMap from '../../components/SideMap/SideMap'
@@ -8,6 +9,9 @@ import SideMap from '../../components/SideMap/SideMap'
 
 const Lodging = () => {
   const [filterOpen, setFilterOpen] = useState(false)
+  const [priceFilter, setPriceFilter] = useState('');
+  const [ratingFilter, setRatingFilter] = useState('');
+
   const lodgingsData = [
     {
       id: 1,
@@ -112,21 +116,98 @@ const Lodging = () => {
     setFilterOpen(!filterOpen);
   }
 
+  const handleApplyFilters = () => {
+    setFilterOpen(false);
+  };
+
+  const filteredLodgings = lodgingsData
+    .filter(lodging => {
+      if (priceFilter === 'lower') {
+        return parseFloat(lodging.price.substring(1)) < 150;
+      } else if (priceFilter === 'higher') {
+        return parseFloat(lodging.price.substring(1)) >= 150;
+      }
+      return true;
+    })
+    .filter(lodging => {
+      if (ratingFilter === 'lower') {
+        return lodging.rating < 3;
+      } else if (ratingFilter === 'higher') {
+        return lodging.rating >= 3;
+      }
+      return true;
+    });
+
+  const handleResetFilters = () => {
+    setPriceFilter('')
+    setRatingFilter('')
+    setFilterOpen(false)
+  }
+
+
   return (
-    <div className="lodging">
+    <div className={`lodging ${filterOpen ? 'filter-open' : ''}`}>
       <div className="filters">
-        <button className="filter-button" onClick={handleFilter}>Filter</button>
-
+        <button className="filter-button" onClick={handleFilter}>
+          <FcFilledFilter />
+        </button>
         {filterOpen && (
-          <>
-            <div className="title">Apply filters:</div>
-            <div className="filter-price"></div>
-          </>
+          <div className="filter-container">
+            <div className="filter-button-close" onClick={handleFilter}>
+              <FcEmptyFilter />
+            </div>
+            <div className="filter-content">
+              <div className="filter-group">
+                <p>Price:</p>
+                <input
+                  type="radio"
+                  value="lower"
+                  name="price" checked={priceFilter === 'lower'}
+                  onChange={() => setPriceFilter('lower')}
+                />
+                Low
+                <input
+                  type="radio"
+                  value="higher"
+                  name="price"
+                  checked={priceFilter === 'higher'}
+                  onChange={() => setPriceFilter('higher')}
+                />
+                High
+              </div>
+              <div className="filter-group">
+                <p>Rating:</p>
+                <input
+                  type="radio"
+                  value="lower"
+                  name="rating"
+                  checked={ratingFilter === 'lower'}
+                  onChange={() => setRatingFilter('lower')}
+                />
+                Low
+                <input
+                  type="radio"
+                  value="higher"
+                  name="rating"
+                  checked={ratingFilter === 'higher'}
+                  onChange={() => setRatingFilter('higher')}
+                />
+                High
+              </div>
+              <div className="button-group">
+                <button className="apply-filters-button" onClick={handleApplyFilters}>
+                  Apply Filters
+                </button>
+                <button className='reset-filters-button' onClick={handleResetFilters}>
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          </div>
         )}
-
       </div>
       <div className="main-list">
-        {lodgingsData.map((lodging, index) => (
+        {filteredLodgings.map((lodging, index) => (
           <>
             <div className="lodging-card" key={index}>
               <Link to={`/lodging/${lodging.id}`}>
@@ -138,9 +219,10 @@ const Lodging = () => {
                   <p>{lodging.description.substring(0, 37)}{lodging.description.length > 37 ? "..." : ""}</p>
                   <p>Price: {lodging.price}</p>
                   <div className="rating">
-                    {Array(lodging.rating).fill(<ImStarFull className="star" key={lodging.id} />)}
+                    {Array.from({ length: lodging.rating }).map((_, index) => (
+                      <ImStarFull className="star" key={index} />
+                    ))}
                   </div>
-                  {/* <p>{lodging.reviews} Reviews</p> */}
                 </div>
               </Link>
             </div>
@@ -148,7 +230,7 @@ const Lodging = () => {
         ))}
       </div>
       <div className="map">
-        <SideMap lodgingsData={lodgingsData} />
+        <SideMap lodgingsData={filteredLodgings} />
       </div>
     </div>
   )
