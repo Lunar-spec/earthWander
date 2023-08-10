@@ -15,9 +15,6 @@ const Login = () => {
     const [user, setUser] = useState(initialUser)
     const [viewPwd, setViewPwd] = useState('password')
 
-    // const url = import.meta.env.VITE_GOOGLE_API
-    // console.log(url)
-
     const handleViewPwd = () => {
         viewPwd === 'password' ?
             setViewPwd('text') : setViewPwd('password')
@@ -39,14 +36,14 @@ const Login = () => {
     }
 
     const validateEmail = (email) => {
-        const regwxEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         if (email === '') {
             alert('Enter Email')
             return false
         }
         else {
-            if (email.match(regwxEmail)) {
+            if (email.match(regexEmail)) {
                 return true
             }
             return alert('Enter a valid Email')
@@ -85,7 +82,7 @@ const Login = () => {
 
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: tokenResponse => console.log(tokenResponse),
-        onError: () => console.log('Login Failed')
+        onError: () => alert('Login Failed')
     })
 
     return (
@@ -114,7 +111,7 @@ const Login = () => {
                         <button type="submit">
                             Login
                         </button>
-                        <span>Don&apos;t have an Account yet?<Link to={'/register'}>Register</Link></span>
+                        <span>Don&apos;t have an Account yet?<Link to={'/register'} className='register'>Register</Link></span>
 
                         <span className='or'>or</span>
 

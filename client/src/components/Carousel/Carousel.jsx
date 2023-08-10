@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './Carousel.scss';
 
-const CombinedCarousel = () => {
+const Carousel = () => {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     const [text, setText] = useState('EARTHWANDER');
 
@@ -118,4 +118,4 @@ const CombinedCarousel = () => {
     );
 };
 
-export default CombinedCarousel;
+export default Carousel;

@@ -70,6 +70,7 @@
 
                     input[type=radio] {
                         accent-color: var(--color);
+                        cursor: pointer;
                         height: 20px;
                         width: 20px;
                     }
@@ -80,8 +81,19 @@
                 }
 
                 .password-group {
+                    position: relative;
                     display: flex;
                     gap: 20px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    .icon{
+                        position: absolute;
+                        right: 1rem;
+                        top: 1.30rem;
+                        cursor: pointer;
+                    }
                 }
 
                 .tnc {
@@ -96,6 +108,7 @@
                         width: 40px;
                         height: 20px;
                         accent-color: var(--color);
+                        cursor: pointer;
 
                         &:hover {
                             filter: drop-shadow(2px 2px 15px #92E3A9);

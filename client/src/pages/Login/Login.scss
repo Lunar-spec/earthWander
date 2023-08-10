@@ -135,6 +135,16 @@
                 span {
                     margin-top: 10px;
                     text-align: center;
+
+                    .register{
+                        color: #a5a5a5;
+                        transition: 0.3s ease-out;
+
+                        &:hover{
+                            border-bottom: 1px solid var(--color);
+                            color: var(--color);
+                        }
+                    }
                 }
 
                 .or::before {
