@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
 // import { storeUser } from '../../components/Helpers';
 import { GiHadesSymbol } from 'react-icons/gi'
@@ -13,9 +13,45 @@ const initialUser = { identifier: "", password: "" };
 const Login = () => {
 
     const [user, setUser] = useState(initialUser)
+    const [viewPwd, setViewPwd] = useState('password')
 
     // const url = import.meta.env.VITE_GOOGLE_API
     // console.log(url)
+
+    const handleViewPwd = () => {
+        viewPwd === 'password' ?
+            setViewPwd('text') : setViewPwd('password')
+    }
+
+    const validatePwd = (password) => {
+        const regexPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+
+        if (password === '') {
+            alert('Enter Password')
+            return false
+        }
+        else {
+            if (password.match(regexPwd)) {
+                return true
+            }
+            return alert('Enter a valid password')
+        }
+    }
+
+    const validateEmail = (email) => {
+        const regwxEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (email === '') {
+            alert('Enter Email')
+            return false
+        }
+        else {
+            if (email.match(regwxEmail)) {
+                return true
+            }
+            return alert('Enter a valid Email')
+        }
+    }
 
     const handleChange = ({ target }) => {
         setUser((currentUser) => ({
@@ -26,21 +62,24 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    //     const url = 'axios url'
-    //     try {
-    //         if(user.identifier && user.password) {
-    //             const {data} = await axios.post(url, user)
+        validateEmail(user.identifier) && validatePwd(user.password)
+            &&
+            //     const url = 'axios url'
+            //     try {
+            //         if(user.identifier && user.password) {
+            //             const {data} = await axios.post(url, user)
 
-    //             if (data.jwt) {
-    //                 setUser(initialUser);
-    //                 navigate('/');
-    //                 // window.location.reload(true);
-    //                 alert('Logged in')
-    //             }
-    //         }
-    //     } catch (error) {
-    //         alert(error)
-    //     }
+            //             if (data.jwt) {
+            //                 setUser(initialUser);
+            //                 navigate('/');
+            // window.location.reload(true);
+            //                 alert('Logged in')
+            //             }
+            //         }
+            //     } catch (error) {
+            //         alert(error)
+            //     }
+            null
 
     }
 
@@ -68,7 +107,10 @@ const Login = () => {
                 <div className="right">
                     <form onSubmit={handleSubmit}>
                         <input type="text" onChange={handleChange} placeholder='Username' name='identifier' value={user.identifier} />
-                        <input type="password" onChange={handleChange} placeholder='Password' name='password' value={user.password} />
+                        <div className="password">
+                            {viewPwd === 'text' ? <FaEye className='icon' onClick={handleViewPwd} /> : <FaEyeSlash className='icon' onClick={handleViewPwd} />}
+                            <input type={viewPwd} onChange={handleChange} placeholder='Password' name='password' value={user.password} />
+                        </div>
                         <button type="submit">
                             Login
                         </button>

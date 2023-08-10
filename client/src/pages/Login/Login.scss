@@ -87,6 +87,19 @@
                 margin: 0 20px 0 20px;
                 padding: 20px 100px 20px 100px;
 
+                .password {
+                    position: relative;
+                    width: 100%;
+
+                    .icon {
+                        position: absolute;
+                        right: 1rem;
+                        top: 15px;
+                        font-size: 18px;
+                        cursor: pointer;
+                    }
+                }
+
                 input {
                     padding: 12px 10px 12px 10px;
                     width: 90%;
