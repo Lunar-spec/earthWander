@@ -6,8 +6,6 @@ import ArrowDropDownRoundedIcon from '@mui/icons-material/ArrowDropDownRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import ExploreRoundedIcon from '@mui/icons-material/ExploreRounded';
 import DeckRoundedIcon from '@mui/icons-material/DeckRounded';
-import FlightTakeoffRoundedIcon from '@mui/icons-material/FlightTakeoffRounded';
-import TrainRoundedIcon from '@mui/icons-material/TrainRounded';
 import AutoStoriesRoundedIcon from '@mui/icons-material/AutoStoriesRounded';
 import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded';
 import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded';
@@ -111,8 +109,6 @@ function DropdownMenu() {
                 <div className="menu">
                     <DropdownItem goToMenu='main' leftIcon={<ExploreRoundedIcon fontSize='large' sx={{color: '#fff' }} />} rightIcon={<ArrowLeftRoundedIcon fontSize='large' sx={{color: '#fff' }}/>}><h2>Travel with us!</h2></DropdownItem>
                     <Link to={'/lodging'}><DropdownItem leftIcon={<DeckRoundedIcon fontSize='medium' sx={{color: '#fff'}}/>}>Lodgings</DropdownItem></Link>
-                    <Link to={'/flights'}><DropdownItem leftIcon={<FlightTakeoffRoundedIcon fontSize='medium' sx={{color: '#fff'}}/>}>Flights</DropdownItem></Link>
-                    <Link to={'/trains'}><DropdownItem leftIcon={<TrainRoundedIcon fontSize='medium' sx={{color: '#fff'}}/>}>Train</DropdownItem></Link>
                     <Link to={'/history'}><DropdownItem leftIcon={<AutoStoriesRoundedIcon fontSize='medium' sx={{color: '#fff'}}/>}>Past Bookings</DropdownItem></Link>
                 </div>
             </CSSTransition>

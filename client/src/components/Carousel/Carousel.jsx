@@ -64,8 +64,8 @@ const Carousel = () => {
                     <h1 onMouseOver={(event) => handleAnimate(event)} data-value='EarthWander'>{text}</h1>
                     <hr />
                     <p>Empowering responsible travelers to explore the world sustainably and ethically, one eco-friendly journey at a time.</p>
-                    <a href="/about" className="slider-btn">
-                        About Us
+                    <a href="/lodging" className="slider-btn">
+                        Explore
                     </a>
                 </div>
             </div>

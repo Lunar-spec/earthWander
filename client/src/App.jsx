@@ -14,7 +14,6 @@ import Footer from './components/Footer/Footer.jsx';
 import Contact from './pages/Contact/Contact';
 import History from './pages/History/History.jsx';
 import TravelDetails from './pages/TravelDetails/TravelDetails.jsx';
-import Trains from './pages/Trains/Trains.jsx';
 import Flights from './pages/Flights/Flights.jsx';
 import Lodging from './pages/Lodging/Lodging.jsx';
 import LodgingDetails from './pages/LodgingDetails/LodgingDetails.jsx';
@@ -105,14 +104,6 @@ function App() {
         {
           path: '/extras/faq',
           element: <Faq />
-        },
-        {
-          path: '/trains',
-          element: <Trains />
-        },
-        {
-          path: '/flights',
-          element: <Flights />
         },
         {
           path: '/lodging',

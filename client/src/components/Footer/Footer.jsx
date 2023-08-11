@@ -10,14 +10,12 @@ const Footer = () => {
                 <div className="item">
                     <h1>Services:</h1>
                     <Link to={'/lodging'}><span>Lodging</span></Link>
-                    <Link to={'/flights'}><span>Flights</span></Link>
-                    <Link to={'/trains'}><span>Trains</span></Link>
+                    <Link to={'/history'}><span>Previous Bookings</span></Link>
                 </div>
                 <div className="item">
                     <h1>Links:</h1>
                     <Link to={'/extras/faq'}><span>FAQ</span></Link>
                     <Link to={'/register'}><span>Register</span></Link>
-                    <Link to={'/history'}><span>Previous Bookings</span></Link>
                     <Link to={'/contact'}><span>Contact Us</span></Link>
                 </div>
                 <div className="item">
