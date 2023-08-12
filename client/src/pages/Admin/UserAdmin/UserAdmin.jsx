@@ -69,25 +69,25 @@ const UserAdmin = () => {
             <table className='user-table'>
                 <thead>
                     <tr className="heading">
-                        <th>UserID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>UserName</th>
-                        <th>Email</th>
-                        <th>Gender</th>
-                        <th>Action</th>
+                        <th className='user-data'>UserID</th>
+                        <th className='user-data'>First Name</th>
+                        <th className='user-data'>Last Name</th>
+                        <th className='user-data'>UserName</th>
+                        <th className='user-data'>Email</th>
+                        <th className='user-data'>Gender</th>
+                        <th className='user-data'>Action</th>
                     </tr>
                 </thead>
                 <tbody className='user-body'>
                     {userData.map(data => (
                         <tr key={data.id} className='data'>
-                            <td className='id'>{data.id}</td>
-                            <td>{data.fname}</td>
-                            <td>{data.lname}</td>
-                            <td>{data.username}</td>
-                            <td>{data.email}</td>
-                            <td className='gender'>{data.gender}</td>
-                            <td className='icon' onClick={handleDelete}><AiOutlineUserDelete /></td>
+                            <td className='user-data'>{data.id}</td>
+                            <td className='user-data'>{data.fname}</td>
+                            <td className='user-data'>{data.lname}</td>
+                            <td className='user-data'>{data.username}</td>
+                            <td className='user-data'>{data.email}</td>
+                            <td className='user-data gender'>{data.gender}</td>
+                            <td className='user-data icon' onClick={handleDelete}><AiOutlineUserDelete /></td>
                         </tr>
                     ))}
                 </tbody>

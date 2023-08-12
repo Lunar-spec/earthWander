@@ -5,14 +5,15 @@ import PopUp from '../../../components/PopUp/PopUp';
 
 const LodgingTable = () => {
 
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(true);
+    const [lodgingEdited, setLodgingEdited] = useState(null)
 
-    const lodgingsData = [
+    const [lodgingsData, setLodgingsData] = useState([
         {
             id: 1,
             title: 'Cozy Eco Cottage',
             description: 'Experience the tranquility of nature in this cozy eco-friendly cottage.',
-            price: '$100',
+            price: '100',
             rating: 4,
             image: 'https://images.pexels.com/photos/5875837/pexels-photo-5875837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             reviews: [
@@ -36,7 +37,7 @@ const LodgingTable = () => {
             id: 2,
             title: 'Sustainable Treehouse Retreat',
             description: 'Stay in a unique treehouse surrounded by lush greenery and enjoy a sustainable living experience.',
-            price: '$150',
+            price: '150',
             rating: 3,
             image: 'https://images.pexels.com/photos/4509002/pexels-photo-4509002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             reviews: [
@@ -60,7 +61,7 @@ const LodgingTable = () => {
             id: 3,
             title: 'Earth-Friendly Beach House',
             description: 'Relax on the beautiful beach and embrace the eco-friendly amenities of this beach house.',
-            price: '$200',
+            price: '200',
             rating: 2,
             image: 'https://images.pexels.com/photos/7061662/pexels-photo-7061662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             reviews: [
@@ -84,7 +85,7 @@ const LodgingTable = () => {
             id: 4,
             title: 'Organic Farmstay Retreat',
             description: 'Immerse yourself in the organic farm life and savor farm-to-table meals during your stay.',
-            price: '$120',
+            price: '120',
             rating: 4,
             image: 'https://images.pexels.com/photos/7174115/pexels-photo-7174115.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             reviews: [
@@ -104,34 +105,31 @@ const LodgingTable = () => {
                 'https://source.unsplash.com/random/?farmstay,eco,organic,animals',
             ],
         },
-    ];
+    ]);
 
-    // const file = document.querySelector('#file');
-    // file.addEventListener('change', (e) => {
-    //     // Get the selected file
-    //     const [file] = e.target.files;
-    //     // Get the file name and size
-    //     const { name: fileName, size } = file;
-    //     // Convert size in bytes to kilo bytes
-    //     const fileSize = (size / 1000).toFixed(2);
-    //     // Set the text content
-    //     const fileNameAndSize = `${fileName} - ${fileSize}KB`;
-    //     document.querySelector('.file-name').textContent = fileNameAndSize;
-    // });
+    const handleEdit = (id) => {
+        const lodgingToEdit = lodgingsData.find((lodging) => lodging.id === id)
+        // console.log(lodgingToEdit)
+        if (lodgingToEdit) {
+            setLodgingEdited(lodgingToEdit)
+            setOpen(true)
+        }
+    }
 
-    // const handleImageChange = (lodgingId, imageIndex, event) => {
-    //     const newLodgingsData = lodgingsData.map(lodging => {
-    //         if (lodging.id === lodgingId) {
-    //             const newImages = [...lodging.images];
-    //             newImages[imageIndex] = URL.createObjectURL(event.target.files[0]);
-    //             return { ...lodging, images: newImages };
-    //         }
-    //         return lodging;
-    //     });
+    const handleSaveChanges = async (updatedLodging) => {
+        const updatedLodgings = lodgingsData.map((lodging) =>
+            lodging.id === updatedLodging.id ? updatedLodging : lodging
+        );
 
-    //     // Update the lodgingsData state with new images
-    //     // setLodgingsData(newLodgingsData);
-    // };
+        setLodgingsData(updatedLodgings);
+        setLodgingEdited(null);
+        setOpen(false);
+    }
+
+    const handleClosePopUp = () => {
+        setOpen(false);
+    }
+
 
     return (
         <div className='lodging-container'>
@@ -162,7 +160,7 @@ const LodgingTable = () => {
                             <td>{data.description}</td>
                             <td>{data.price}</td>
                             <td>{data.rating}</td>
-                            <td><img src={data.image} alt="Lodging" /></td>
+                            <td><img className='img' src={data.image} alt="Lodging" /></td>
                             <td>
                                 <ul>
                                     {data.reviews.map((review, index) => (
@@ -179,18 +177,25 @@ const LodgingTable = () => {
                                 <ul>
                                     {data.images.map((image, index) => (
                                         <li key={index}>
-                                            <img src={image} alt={`Image ${index + 1}`} />
+                                            <img className='img' src={image} alt={`Image ${index + 1}`} />
                                         </li>
                                     ))}
                                 </ul>
                             </td>
-                            <td className='icons'><MdEdit className='edit' /> <MdDeleteForever className='delete' /></td>
+                            <td className='icons'>
+                                <MdEdit className='edit' onClick={() => handleEdit(data.id)} />
+                                <MdDeleteForever className='delete' />
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <div>
-                <PopUp />
+                {
+                    open && lodgingEdited && (
+                        <PopUp lodging={lodgingEdited} onClose={handleClosePopUp} onSave={handleSaveChanges} />
+                    )
+                }
             </div>
         </div >
     );

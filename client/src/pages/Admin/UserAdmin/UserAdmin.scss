@@ -32,7 +32,6 @@
             padding: 20px;
             text-align: center;
             color: #fff;
-            border-top:2px solid #fff;
             padding-bottom: 10px;
 
             .gender{
@@ -43,12 +42,18 @@
                 cursor: pointer;
                 font-size: 24px;
                 transition: 0.3s ease-out;
+                padding: 5px 10px;
 
                 &:hover{
                     color: #f04072bf;
-                    filter: drop-shadow(0 0 2.5px #db1b4e);
+                    // background: #fff;
+                    filter: drop-shadow(0 0 5px #db1b4e);
                 }
             }
         }
     }
 }
+.user-data{
+    border: none;
+}
+
