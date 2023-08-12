@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { Outlet, Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ScrollRestoration } from 'react-router-dom';
@@ -14,7 +15,6 @@ import Footer from './components/Footer/Footer.jsx';
 import Contact from './pages/Contact/Contact';
 import History from './pages/History/History.jsx';
 import TravelDetails from './pages/TravelDetails/TravelDetails.jsx';
-import Flights from './pages/Flights/Flights.jsx';
 import Lodging from './pages/Lodging/Lodging.jsx';
 import LodgingDetails from './pages/LodgingDetails/LodgingDetails.jsx';
 import Tnc from './pages/Extras/Tnc/Tnc.jsx';
@@ -23,6 +23,7 @@ import Faq from './pages/Extras/Faq/Faq.jsx';
 
 import './App.scss'
 import 'aos/dist/aos.css';
+import Admin from './pages/Admin/Admin.jsx';
 
 function App() {
 
@@ -49,13 +50,20 @@ function App() {
     )
   }
 
-  // eslint-disable-next-line react/prop-types
   const ProtectedRoute = ({ children }) => {
     if (!name) {
       return (<Navigate to={'/login'} />)
     }
-
     return children
+  }
+
+  const AdminRoute = ({ children }) => {
+    const isAdmin = true;
+
+    if (!isAdmin) {
+      return (<Navigate to={'/'} />)
+    }
+    return children;
   }
 
   const router = createBrowserRouter([
@@ -116,6 +124,12 @@ function App() {
         {
           path: '/*',
           element: <Notfound />
+        },
+        {
+          path: '/admin',
+          element: <AdminRoute>
+            <Admin />
+          </AdminRoute>
         }
       ]
     },
