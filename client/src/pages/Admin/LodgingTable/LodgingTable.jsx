@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './LodgingTable.scss'
 import { MdDeleteForever, MdEdit } from 'react-icons/md'
+import PopUp from '../../../components/PopUp/PopUp';
 
 const LodgingTable = () => {
 
@@ -118,19 +119,19 @@ const LodgingTable = () => {
     //     document.querySelector('.file-name').textContent = fileNameAndSize;
     // });
 
-    const handleImageChange = (lodgingId, imageIndex, event) => {
-        const newLodgingsData = lodgingsData.map(lodging => {
-            if (lodging.id === lodgingId) {
-                const newImages = [...lodging.images];
-                newImages[imageIndex] = URL.createObjectURL(event.target.files[0]);
-                return { ...lodging, images: newImages };
-            }
-            return lodging;
-        });
+    // const handleImageChange = (lodgingId, imageIndex, event) => {
+    //     const newLodgingsData = lodgingsData.map(lodging => {
+    //         if (lodging.id === lodgingId) {
+    //             const newImages = [...lodging.images];
+    //             newImages[imageIndex] = URL.createObjectURL(event.target.files[0]);
+    //             return { ...lodging, images: newImages };
+    //         }
+    //         return lodging;
+    //     });
 
-        // Update the lodgingsData state with new images
-        // setLodgingsData(newLodgingsData);
-    };
+    //     // Update the lodgingsData state with new images
+    //     // setLodgingsData(newLodgingsData);
+    // };
 
     return (
         <div className='lodging-container'>
@@ -188,27 +189,8 @@ const LodgingTable = () => {
                     ))}
                 </tbody>
             </table>
-
-            <div className="lodging-edit">
-                <input type="text" name="" id="" placeholder='Title' />
-                Rating:
-                <select name="rating" id="" >
-                    <option value="1" className='star'>1</option>
-                    <option value="2" className='star'>2</option>
-                    <option value="3" className='star'>3</option>
-                    <option value="4" className='star'>4</option>
-                    <option value="5" className='star'>5</option>
-                </select>
-                <input type="number" name="" id="" />
-                <input type="number" name="" id="" />
-                <div className="file-input">
-                    <input type="file" id="file" class="file" />
-                    <label htmlFor='file'>
-                        Select file
-                        <p className="file-name"></p>
-                    </label>
-                </div>
-                <button type="submit">Make Changes</button>
+            <div>
+                <PopUp />
             </div>
         </div >
     );
