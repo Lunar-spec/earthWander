@@ -14,8 +14,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'EarthWander',
-        allowed_formats: ['jpg', 'jpeg', 'png'],
+        folder: 'images',
     }
 })
 

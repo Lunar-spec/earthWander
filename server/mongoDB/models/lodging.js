@@ -2,11 +2,6 @@ import mongoose from "mongoose";
 import '../../config/multerConfig.js'
 
 const lodgingSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     title: {
         type: String,
         required: true,

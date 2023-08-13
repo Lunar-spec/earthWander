@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv'
 import connectDb from './mongoDB/connect.js'
 import lodgingRoutes from './routes/lodgings.js'
 import userRoutes from './routes/users.js'
+import auth from './middleware/auth.js'
 dotenv.config();
 
 
@@ -13,7 +14,7 @@ app.use(express.json())
 
 const PORT = process.env.PORT || 5000
 
-app.use('/lodging', lodgingRoutes)
+app.use('/lodging', auth, lodgingRoutes)
 app.use('/users', userRoutes)
 
 app.get('/', async (req, res) => {
