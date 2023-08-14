@@ -20,6 +20,7 @@ router.post('/add', auth, upload.array('images', 5), async (req, res) => {
             latitude,
             longitude,
         } = req.body
+
         console.log(req.body)
 
         const images = req.files.map((file) => file.path)
@@ -65,44 +66,50 @@ router.get('/', auth, async (req, res) => {
 
         res.status(201).json(allLodgings)
     } catch (error) {
-        res.status(401).json({ error: 'Error fetching all the data' })
+        res.status(500).json({ error: 'Error fetching all the data' })
     }
 })
 
-router.put('/edit/:id', auth, async (req, res) => {
+router.put('/edit', auth, upload.array('images', 5), async (req, res) => {
+    //// only admins and superadmin
+    const { lodgingId } = req.body;
     try {
         const {
-            id,
             price,
             rating,
             reviews,
             isBooked,
             additionalInfo,
+            index,
         } = req.body
 
-        const foundLodging = Lodging.findById(id)
+        // console.log(req.body)
 
-        if (!foundLodging){
-            return res.status(404).json({error: 'No such Lodging with Id'})
+        const foundLodging = await Lodging.findById(lodgingId)
+
+        if (!foundLodging) {
+            return res.status(404).json({ error: 'No such Lodging with Id' })
         }
 
         foundLodging.rating = rating;
-
         foundLodging.isBooked = isBooked;
-        
         foundLodging.reviews = reviews;
-
         foundLodging.price = price;
-
         foundLodging.additionalInfo = additionalInfo;
+
+        if (req.files && req.files.length > 0) {
+            const newImages = req.files.map((file) => file.path);
+            foundLodging.images[index] = newImages[0];
+        }
 
         await foundLodging.save();
 
-        return res.status(201).json({message: 'Lodging data is updated'})
+        return res.status(201).json(foundLodging)
     } catch (error) {
-        res.status(401).json({error: 'Error in updating the file'})
+        res.status(500).json(error)
     }
 })
+
 
 
 

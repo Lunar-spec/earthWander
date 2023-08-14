@@ -50,9 +50,8 @@ router.post('/register', async (req, res) => {
         newUser.token = token;
 
         res.status(201).json(newUser);
-
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong' })
+        res.status(500).json(error)
     }
 })
 
