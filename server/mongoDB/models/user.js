@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         trim: true,
     },
+    role: {
+        type: String,
+        enum: ['admin', 'user', 'superadmin'],
+        required: true,
+    },
     gender: {
         type: String,
         enum: ['male', 'female'],
@@ -29,9 +34,6 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    },
-    token: {
-        type: String,
     },
 },
 {

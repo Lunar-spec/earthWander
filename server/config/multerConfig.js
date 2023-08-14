@@ -14,7 +14,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'images',
+        folder: 'EarthWander',
+        public_id: (req, file) => `earthwander_${file.originalname}`
     }
 })
 
